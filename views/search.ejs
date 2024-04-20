@@ -1,0 +1,26 @@
+<div class="author">
+    <h1 class="author_heading">Search Results</h1>
+</div>
+
+<section class="articles">
+    <ul class="article-ul">
+        <% if (data && data.length) { %>
+            <% data.forEach(post => { %>
+                <li>
+                    <a href="/post/<%- post._id %>">
+                        <span>
+                            <%= post.title %> <!-- Escape HTML in title -->
+                        </span>
+                        <span class="articles-list_date">
+                            <% if (post.createdAt) { %>
+                                <%= post.createdAt.toDateString() %> <!-- Check if createdAt exists -->
+                            <% } %>
+                        </span>
+                    </a>
+                </li>
+            <% }); %>
+        <% } else { %>
+            <li>No results found.</li>
+        <% } %>
+    </ul>
+</section>
